@@ -22,7 +22,15 @@
 <div class="cd-modal" id="modal-1">
     <div class="modal-content">
         <div class="modal-form">
-            <img src="">
+            <img src="img/app_icon1.png">
+            <div class="form-holder">
+                <form>
+                    <input id="name_field" type="text" required placeholder="Name">
+                    <input id="email_field" type="email" required placeholder="Email id">
+                    <input id="phone_field" type="number" required placeholder="Phone number">
+                    <button id="download-btn" type="submit" class="cd-btn">Request Download</button>
+                </form>
+            </div>
         </div>
         <div class="modal-description">
             <h2>My Modal Content</h2>
@@ -50,5 +58,51 @@
   if( !window.jQuery ) document.write('<script src="js/jquery-2.2.1-min.js"><\/script>');
 </script>
 <script src="js/main.js"></script> <!-- Resource jQuery -->
+<script>
+  $.fn.extend({
+    animateCss: function(animationName, callback) {
+      var animationEnd = (function(el) {
+        var animations = {
+          animation: 'animationend',
+          OAnimation: 'oAnimationEnd',
+          MozAnimation: 'mozAnimationEnd',
+          WebkitAnimation: 'webkitAnimationEnd',
+        };
+
+        for (var t in animations) {
+          if (el.style[t] !== undefined) {
+            return animations[t];
+          }
+        }
+      })(document.createElement('div'));
+
+      this.addClass('animated ' + animationName).one(animationEnd, function() {
+        /*$(this).removeClass('animated ' + animationName);*/
+
+        if (typeof callback === 'function') callback();
+      });
+
+      return this;
+    },
+  });
+  $('#download-btn').click(function(e){
+    e.preventDefault();
+    if(!$('.form-holder form').hasClass('animated'))
+      $('.form-holder form').animateCss('bounceInDown', function() {
+        $('#name_field').focus();
+        $('.form-holder form').addClass('expanded').removeClass('bounceInDown');
+      });
+    else{
+      $('.form-holder form').animateCss('bounceOutUp', function() {
+        $('.form-holder input').val("");
+        $('.form-holder form').removeClass('expanded').removeClass('animated bounceOutUp');
+      });
+      $('#download-btn').text('Sending...');
+      setTimeout(function(){
+        $('#download-btn').text('Request Download');
+      }, 2000);
+    }
+  })
+</script>
 </body>
 </html>
