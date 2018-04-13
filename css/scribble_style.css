@@ -155,7 +155,7 @@ h1 {
 }
 .modal-form .form-holder{
   overflow: hidden;
-  padding-bottom: 1em;
+  padding-bottom: 2em;
 }
 .modal-form button{
   border: none;
@@ -164,10 +164,10 @@ h1 {
   width: 100%;
   margin-bottom: 2em;
 }
-.modal-form form{
+.form-container{
   transform: translate3d(0, -196px, 0);
 }
-.modal-form form.expanded{
+.form-container.expanded{
   transform: translate3d(0, 0px, 0);
 }
 .modal-form input{
@@ -177,6 +177,9 @@ h1 {
   width: 86%;
   font-size: 1em;
   margin-bottom: 1em;
+}
+.modal-form .thank-you{
+  display: none;
 }
 
 @media only screen and (min-width: 1024px) {

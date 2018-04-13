@@ -24,12 +24,15 @@
         <div class="modal-form">
             <img src="img/app_icon1.png">
             <div class="form-holder">
-                <form>
-                    <input id="name_field" type="text" required placeholder="Name">
-                    <input id="email_field" type="email" required placeholder="Email id">
-                    <input id="phone_field" type="number" required placeholder="Phone number">
-                    <button id="download-btn" type="submit" class="cd-btn">Request Download</button>
-                </form>
+                <div class="form-container">
+                    <form>
+                        <input id="name_field" type="text" required placeholder="Name">
+                        <input id="email_field" type="email" required placeholder="Email id">
+                        <input id="phone_field" type="number" required placeholder="Phone number">
+                        <button id="download-btn" type="submit" class="cd-btn">Request Download</button>
+                    </form>
+                    <p class="thank-you">Thank you for the request!<br/>We will mail you the details soon.</p>
+                </div>
             </div>
         </div>
         <div class="modal-description">
@@ -87,19 +90,22 @@
   });
   $('#download-btn').click(function(e){
     e.preventDefault();
-    if(!$('.form-holder form').hasClass('animated'))
-      $('.form-holder form').animateCss('bounceInDown', function() {
+    $('.thank-you').hide();
+    if(!$('.form-container').hasClass('animated'))
+      $('.form-container').animateCss('bounceInDown', function() {
         $('#name_field').focus();
-        $('.form-holder form').addClass('expanded').removeClass('bounceInDown');
+        $('.form-container').addClass('expanded').removeClass('bounceInDown');
       });
     else{
-      $('.form-holder form').animateCss('bounceOutUp', function() {
+      $('.form-container').animateCss('bounceOutUp', function() {
         $('.form-holder input').val("");
-        $('.form-holder form').removeClass('expanded').removeClass('animated bounceOutUp');
+        $('.form-container').removeClass('expanded').removeClass('animated bounceOutUp');
       });
       $('#download-btn').text('Sending...');
+      // replace setTimeout with the AJAX call
       setTimeout(function(){
         $('#download-btn').text('Request Download');
+        $('.thank-you').fadeIn('fast').delay(3000).fadeOut('fast');
       }, 2000);
     }
   })
