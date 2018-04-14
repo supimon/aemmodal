@@ -23,3 +23,9 @@ All credits to CodyHouse (http://codyhouse.co/gem/animated-transition-effects/)
   - ignore the other_effects directory as its just other modal effects from the link mentioned above.
   - make sure to minify the styles and scripts if possible on production
 
+
+Known issues
+=============
+
+ - style fix for gallery on iPad
+
