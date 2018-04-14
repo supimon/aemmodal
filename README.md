@@ -21,4 +21,5 @@ All credits to CodyHouse (http://codyhouse.co/gem/animated-transition-effects/)
    - 4. Modal Scribble animation effect styles - from lines 429 to 516
 
   - ignore the other_effects directory as its just other modal effects from the link mentioned above.
+  - make sure to minify the styles and scripts if possible on production
 
