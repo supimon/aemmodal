@@ -7,33 +7,36 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Rock+Salt|PT+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
-    <link rel="stylesheet" href="css/scribble_style.css"> <!-- Resource style -->
+    <link rel="stylesheet" href="css/aem_modal_styles.css"> <!-- Resource style -->
 
-    <title>Scribble Modal</title>
+    <title>AEM Modal in Scribble style</title>
 </head>
 <body class="scribble-transition">
+
+<!--this doesnt matter-->
 <main class="cd-main-content">
     <div class="center">
         <h1>Scribble</h1>
         <a href="#modal-1" class="cd-btn cd-modal-trigger">Start Effect</a>
     </div>
-</main> <!-- .cd-main-content -->
+</main> <!-- this doesnt matter -->
 
+<!--this is where you start copying-->
 <div class="cd-modal" id="modal-1">
     <div class="modal-content">
         <div class="modal-form">
             <img src="img/app_icon1.png">
-            <div class="form-holder">
-                <div class="form-container">
-                    <form>
-                        <input id="name_field" type="text" required placeholder="Name">
-                        <input id="email_field" type="email" required placeholder="Email id">
-                        <input id="phone_field" type="number" required placeholder="Phone number">
-                        <button id="download-btn" type="submit" class="cd-btn">Request Download</button>
-                    </form>
-                    <p class="thank-you">Thank you for the request!<br/>We will mail you the details soon.</p>
+            <form>
+                <div class="input-holder">
+                    <input id="name_field" type="text" required placeholder="Name">
+                    <input id="email_field" type="email" required placeholder="Email id">
+                    <input id="phone_field" type="number" required placeholder="Phone number">
                 </div>
-            </div>
+                <div class="submit-holder">
+                    <button id="download-btn" type="submit" class="cd-btn">Request Download</button>
+                </div>
+            </form>
+            <p class="thank-you">Thank you for the request!<br/>We will mail you the details soon.</p>
         </div>
         <div class="modal-description">
             <h2>My Modal Content</h2>
@@ -60,55 +63,6 @@
 <script>
   if( !window.jQuery ) document.write('<script src="js/jquery-2.2.1-min.js"><\/script>');
 </script>
-<script src="js/main.js"></script> <!-- Resource jQuery -->
-<script>
-  $.fn.extend({
-    animateCss: function(animationName, callback) {
-      var animationEnd = (function(el) {
-        var animations = {
-          animation: 'animationend',
-          OAnimation: 'oAnimationEnd',
-          MozAnimation: 'mozAnimationEnd',
-          WebkitAnimation: 'webkitAnimationEnd',
-        };
-
-        for (var t in animations) {
-          if (el.style[t] !== undefined) {
-            return animations[t];
-          }
-        }
-      })(document.createElement('div'));
-
-      this.addClass('animated ' + animationName).one(animationEnd, function() {
-        /*$(this).removeClass('animated ' + animationName);*/
-
-        if (typeof callback === 'function') callback();
-      });
-
-      return this;
-    },
-  });
-  $('#download-btn').click(function(e){
-    e.preventDefault();
-    $('.thank-you').hide();
-    if(!$('.form-container').hasClass('animated'))
-      $('.form-container').animateCss('bounceInDown', function() {
-        $('#name_field').focus();
-        $('.form-container').addClass('expanded').removeClass('bounceInDown');
-      });
-    else{
-      $('.form-container').animateCss('bounceOutUp', function() {
-        $('.form-holder input').val("");
-        $('.form-container').removeClass('expanded').removeClass('animated bounceOutUp');
-      });
-      $('#download-btn').text('Sending...');
-      // replace setTimeout with the AJAX call
-      setTimeout(function(){
-        $('#download-btn').text('Request Download');
-        $('.thank-you').fadeIn('fast').delay(3000).fadeOut('fast');
-      }, 2000);
-    }
-  })
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>
