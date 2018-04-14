@@ -249,9 +249,11 @@ h1 {
   display: none;
 }
 
-/*
- * 		GALLERY
- * */
+/* --------------------------------
+
+Slider styles
+
+-------------------------------- */
 .container {
     position: relative;
     max-width: 960px;
@@ -260,14 +262,12 @@ h1 {
     border-top:1px solid rgba(0,0,0,.1);
     color:#444;
 }
-
 .slide_1,
 .slide_2,
 .slide_3 {
     color:white;
     height:600px;
 }
-
 .slide_1 {
     background: url('http://lorempixel.com/600/400/nature/2/') no-repeat center center;
     background-size: 100% auto;
@@ -280,13 +280,6 @@ h1 {
     background: url('http://lorempixel.com/600/400/nature/6/') no-repeat center center;
     background-size: 100% auto;
 }
-
-/* --------------------------------
-
-Slider styles
-
--------------------------------- */
-
 .csstransforms .as-wrap { transition: opacity 1s ease-out; }
 .as-wrap {
     display:none;
