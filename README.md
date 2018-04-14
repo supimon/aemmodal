@@ -28,4 +28,5 @@ Known issues
 =============
 
  - style fix for gallery on iPad
+ - not tested by the tester
 
