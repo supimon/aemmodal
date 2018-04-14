@@ -22,3 +22,5 @@ All credits to CodyHouse (http://codyhouse.co/gem/animated-transition-effects/)
    - 3. Slider styles - from lines 257 to 422
    - 4. Modal Scribble animation effect styles - from lines 429 to 516
 
+  - ignore the other_effects directory as its just other modal effects from the link mentioned above.
+
