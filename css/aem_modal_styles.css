@@ -62,6 +62,7 @@ h1 {
 
 /* Modal Window */
 .cd-modal {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;

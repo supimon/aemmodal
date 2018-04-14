@@ -1,4 +1,5 @@
 jQuery(document).ready(function($){
+	$('#modal-1').css({display: 'block'}); // to stop the initial display of the modal
 
 	//cache some jQuery objects
 	var modalTrigger = $('.cd-modal-trigger'),
