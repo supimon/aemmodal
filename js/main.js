@@ -61,28 +61,36 @@ jQuery(document).ready(function($){
 		resize = false;
 	}
 	// handle modal form expansion and submission
-  $('#download-btn').click(function(e) {
+  $('#download-btn').click(formHandler);
+	// utility function for form
+  function formHandler(e) {
+    $('#download-btn').unbind('click', formHandler);
     e.preventDefault();
     $('.thank-you').hide();
     if($('.input-holder').hasClass('expanded')){
       $('#download-btn').text('Sending...');
       // replace setTimeout with the AJAX call
       setTimeout(function(){
+      	// display useful messages
         $('#download-btn').text('Request Download');
+        $('#download-btn').click(formHandler);
         $('.thank-you').fadeIn('fast').delay(3000).fadeOut('fast');
       }, 2000);
+      // collapse form
       $('.input-holder').slideUp(500, function(){
         $(this).removeClass('expanded');
         $('.modal-form input').val("");
       });
     }
     else{
+    	// expand form
       $('.input-holder').slideDown(500, function(){
         $('#name_field').focus();
         $(this).addClass('expanded');
+        $('#download-btn').click(formHandler);
       });
     }
-  });
+  }
 	// initialise the slider
   $(".my-slider").as();
 

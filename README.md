@@ -8,8 +8,6 @@ All credits to CodyHouse (http://codyhouse.co/gem/animated-transition-effects/)
   - Modernizer is included by default, take it out if its already included by WP
   - There is a fallback to include jquery from server if google server is down. This code(line 111)
   can be removed.
-  - slider.js and main.js have been mashed into a min file and can be found within the js folder. Use this for
-  production.
   - edit/use lines 28 to 41 in the html file for product icon, form fields and customising thank you message.
   - edit/use lines 64 to 85 in the main.js file for handing form UI and submission actions.
   - edit/use lines 43 to 97 in the html file for product title, description, gallery slide images and
