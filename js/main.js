@@ -18,7 +18,6 @@ jQuery(document).ready(function($){
 			(!window.requestAnimationFrame) ? setTimeout(setLayerDimensions, 300) : window.requestAnimationFrame(setLayerDimensions);
 		}
 	});
-
 	//open modal window
 	modalTrigger.on('click', function(event){	
 		event.preventDefault();
@@ -30,7 +29,6 @@ jQuery(document).ready(function($){
 			transitionLayer.removeClass('opening');
 		}, delay);
 	});
-
 	//close modal window
 	modalWindow.on('click', '.modal-close', function(event){
 		event.preventDefault();
@@ -41,7 +39,7 @@ jQuery(document).ready(function($){
 			transitionBackground.off('webkitAnimationEnd oanimationend msAnimationEnd animationend');
 		});
 	});
-
+	// utility function for modal
 	function setLayerDimensions() {
 		var windowWidth = $(window).width(),
 			windowHeight = $(window).height(),
@@ -62,7 +60,7 @@ jQuery(document).ready(function($){
 
 		resize = false;
 	}
-
+	// handle modal form expansion and submission
   $('#download-btn').click(function(e) {
     e.preventDefault();
     $('.thank-you').hide();
@@ -85,5 +83,7 @@ jQuery(document).ready(function($){
       });
     }
   });
+	// initialise the slider
+  $(".my-slider").as();
 
 });
