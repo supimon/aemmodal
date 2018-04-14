@@ -1,0 +1,521 @@
+/* -------------------------------- 
+
+Primary style
+
+-------------------------------- */
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+  font-family: sans-serif;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a {
+  text-decoration: none;
+}
+
+/* -------------------------------- 
+
+Shared style
+
+-------------------------------- */
+.cd-btn {
+  display: inline-block;
+  padding: 1.6em 2em;
+  font-size: 1.4rem;
+  letter-spacing: .15em;
+  font-weight: 700;
+  text-transform: uppercase;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  -webkit-transition: box-shadow .3s;
+  transition: box-shadow .3s;
+  cursor: pointer;
+}
+.cd-btn:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+h1 {
+  line-height: 1;
+}
+
+/* Main Content */
+.cd-main-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  /* vertically align its content */
+  display: table;
+}
+.cd-main-content .center {
+  /* vertically align inside parent element */
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* Modal Window */
+.cd-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+  transition: opacity .3s 0s, visibility 0s .3s;
+}
+.cd-modal .modal-content {
+  height: 100%;
+  overflow-y: auto;
+  padding: 3em 5%;
+}
+.cd-modal h1, .cd-modal h2 {
+  text-align: center;
+}
+.cd-modal p {
+  line-height: 1.6;
+  margin: 2em 0;
+  max-width: 800px;
+}
+.cd-modal .modal-close {
+  /* 'X' icon */
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  right: 5%;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 100%;
+  color: transparent;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: visibility 0s .3s, opacity .3s 0s, -webkit-transform .3s 0s;
+  transition: visibility 0s .3s, opacity .3s 0s, -webkit-transform .3s 0s;
+  transition: transform .3s 0s, visibility 0s .3s, opacity .3s 0s;
+  transition: transform .3s 0s, visibility 0s .3s, opacity .3s 0s, -webkit-transform .3s 0s;
+}
+.cd-modal .modal-close::before, .cd-modal .modal-close::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  height: 2px;
+  width: 20px;
+  top: calc(50% - 1px);
+  left: calc(50% - 10px);
+}
+.cd-modal .modal-close::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.cd-modal .modal-close::after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.cd-modal.visible {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity .7s, visibility 0s;
+  transition: opacity .7s, visibility 0s;
+}
+.cd-modal.visible .modal-content {
+  /* this fixes the buggy scrolling on webkit browsers - mobile devices only - when overflow property is applied */
+  -webkit-overflow-scrolling: touch;
+}
+.cd-modal.visible .modal-close {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: visibility 0s 0s, opacity .3s 0s, -webkit-transform .3s 0s;
+  transition: visibility 0s 0s, opacity .3s 0s, -webkit-transform .3s 0s;
+  transition: transform .3s 0s, visibility 0s 0s, opacity .3s 0s;
+  transition: transform .3s 0s, visibility 0s 0s, opacity .3s 0s, -webkit-transform .3s 0s;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.modal-form {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.modal-form .input-holder{
+  overflow: hidden;
+  display: none;
+}
+.modal-form button{
+  border: none;
+}
+.modal-form img{
+  width: 50%;
+  margin-bottom: 2em;
+}
+.modal-form input{
+  border-radius: 1.6em;
+  border: none;
+  padding: 1em 2em;
+  width: 86%;
+  font-size: 1em;
+  margin-bottom: 1em;
+}
+.modal-form .thank-you{
+  display: none;
+}
+
+@media only screen and (min-width: 1024px) {
+  .cd-modal h1, .cd-modal h2 {
+    text-align: left;
+  }
+  .cd-modal .modal-content {
+    padding: 6em 5%;
+  }
+  .cd-modal .modal-close {
+    height: 60px;
+    width: 60px;
+  }
+  .cd-modal .modal-close::before, .cd-modal .modal-close::after {
+    height: 2px;
+    width: 26px;
+    top: calc(50% - 1px);
+    left: calc(50% - 13px);
+  }
+  .cd-modal p {
+    font-size: 2rem;
+  }
+  .modal-form{
+    display: inline-block;
+    min-width: 200px;
+    width: 25%;
+    float: left;
+    margin-right: 5%;
+  }
+  .modal-description{
+    display: inline-block;
+    float: left;
+    width: 70%;
+  }
+}
+
+/* Transition Layer */
+.cd-transition-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+}
+.cd-transition-layer .bg-layer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateY(-50%) translateX(-2%);
+          transform: translateY(-50%) translateX(-2%);
+  /* its dimentions will be overwritten using jQuery to proportionally fit the viewport */
+  height: 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+.cd-transition-layer.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.cd-transition-layer.visible .bg-layer {
+  -webkit-transform: translateY(-50%) translateX(-98%);
+          transform: translateY(-50%) translateX(-98%);
+}
+.cd-transition-layer.opening .bg-layer, .cd-transition-layer.closing .bg-layer {
+  -webkit-animation-duration: .8s;
+          animation-duration: .8s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.no-cssanimations .cd-transition-layer {
+  display: none;
+}
+
+/* -------------------------------- 
+
+Scribble Effect
+
+-------------------------------- */
+.scribble-transition {
+  font-family: "PT Sans", sans-serif;
+  color: #f6f6f6;
+}
+.scribble-transition h1, .scribble-transition h2 {
+  margin-bottom: .4em;
+  font-family: 'Nunito', sans-serif;
+  font-size: 4rem;
+  font-weight: 700;
+}
+.scribble-transition .cd-btn {
+  background: #141517;
+  color: #f6f6f6;
+  border-radius: 50em;
+}
+.scribble-transition .cd-main-content {
+  background: #0d4cd8;
+}
+.scribble-transition .cd-modal {
+  background: #44b5ce;
+}
+.scribble-transition .cd-modal .modal-content {
+  color: #f6f6f6;
+}
+.scribble-transition .cd-modal .modal-close::before,
+.scribble-transition .cd-modal .modal-close::after {
+  background: #f6f6f6;
+}
+.scribble-transition .cd-modal .modal-close {
+  background: #3ca2b9;
+}
+.scribble-transition .cd-modal .modal-close:hover {
+  background: #3a8ea0;
+}
+.scribble-transition .cd-transition-layer .bg-layer {
+  -webkit-transform: translateY(-50%) translateX(-1.3158%);
+          transform: translateY(-50%) translateX(-1.3158%);
+  /* sprite composed of 38 frames */
+  width: 3800%;
+  background-image: url(../img/scribble_violet.png);
+}
+.scribble-transition .cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence-2 0.8s steps(37) forwards;
+          animation: cd-sequence-2 0.8s steps(37) forwards;
+}
+.scribble-transition .cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence-2 0.8s steps(37) forwards reverse;
+          animation: cd-sequence-2 0.8s steps(37) forwards reverse;
+}
+.scribble-transition .cd-transition-layer.visible .bg-layer {
+  -webkit-transform: translateY(-50%) translateX(-98.6842%);
+          transform: translateY(-50%) translateX(-98.6842%);
+}
+@media only screen and (min-width: 768px) {
+  .scribble-transition h1 {
+    font-size: 7.2rem;
+  }
+  .scribble-transition h2 {
+    font-size: 5.8rem;
+  }
+}
+
+/* -------------------------------- 
+
+Animations
+
+-------------------------------- */
+
+@-webkit-keyframes cd-sequence-2 {
+  0% {
+    -webkit-transform: translateY(-50%) translateX(-1.3158%);
+            transform: translateY(-50%) translateX(-1.3158%);
+  }
+  100% {
+    -webkit-transform: translateY(-50%) translateX(-98.6842%);
+            transform: translateY(-50%) translateX(-98.6842%);
+  }
+}
+@keyframes cd-sequence-2 {
+  0% {
+    -webkit-transform: translateY(-50%) translateX(-1.3158%);
+            transform: translateY(-50%) translateX(-1.3158%);
+  }
+  100% {
+    -webkit-transform: translateY(-50%) translateX(-98.6842%);
+            transform: translateY(-50%) translateX(-98.6842%);
+  }
+}
+
+/*
+ * 		GALLERY
+ * */
+.container {
+  position: relative;
+  max-width: 960px;
+}
+.scroll-test p {
+  border-top:1px solid rgba(0,0,0,.1);
+  color:#444;
+}
+
+.slide_1,
+.slide_2,
+.slide_3 {
+  color:white;
+  height:600px;
+}
+
+.slide_1 {
+  background: url('http://lorempixel.com/600/400/nature/2/') no-repeat center center;
+  background-size: 100% auto;
+}
+.slide_2 {
+  background: url('http://lorempixel.com/600/400/nature/4/') no-repeat center center;
+  background-size: 100% auto;
+}
+.slide_3 {
+  background: url('http://lorempixel.com/600/400/nature/6/') no-repeat center center;
+  background-size: 100% auto;
+}
+
+
+/*
+ * 		Slider styles
+ * */
+.csstransforms .as-wrap { transition: opacity 1s ease-out; }
+.as-wrap {
+  display:none;
+  opacity: 0;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.as-wrap.loaded {opacity: 1;}
+.as-wrap .as-view {
+  position: relative;
+  width:100%;
+  overflow: hidden;
+  height:600px;
+}
+.as-wrap .as-view .as-slider {
+  position: absolute;
+  list-style: none;
+  margin:0; padding:0;
+}
+.csstransforms .as-wrap .as-view .as-slider { transition: left 1s ease-in-out; }
+.csstransforms .as-wrap .as-view .as-slider.no-transition { transition: none; }
+.as-wrap .as-view .as-slider .as-item {
+  position: relative;
+  overflow: hidden;
+  margin:0; padding:0;
+  float: left;
+}
+
+/* Progress bar */
+.as-wrap .as-progress {
+  position: relative;
+  width: 100%;
+  min-height:5px;
+  margin-top:-5px;
+  background: transparent;
+  overflow: hidden;
+  z-index:2;
+}
+
+.as-wrap .as-progress-value {
+  position: absolute;
+  top:0;
+  left:0;
+  min-height: 5px;
+  min-width: 0;
+  width:0;
+  max-width: 100%;
+  background: #0061fe;
+}
+
+/* Navigation */
+.csstransforms .as-wrap .as-nav a { transition: opacity .4s ease-out; }
+.as-wrap .as-nav a {
+  opacity: 0;
+  position: absolute;
+  top:0;
+  height:100%;
+  width:50px;
+  text-align:center;
+  color:white;
+  z-index:2;
+}
+.as-wrap .as-nav .dir-prev { left:0; }
+.as-wrap .as-nav .dir-next { right:0; }
+.as-wrap .as-nav a:hover {
+  color:#000;
+  opacity: 1;
+}
+.as-wrap.hovering-marker .as-nav a { opacity: 1; }
+.as-wrap .as-nav a span {
+  position: absolute;
+  top:50%;
+  left:0;
+  margin-top:-40px;
+  display:block;
+  height:80px;
+  width: 50px;
+  font-size:2em;
+  line-height: 80px;
+  color: white;
+  /*&lang;*/
+}
+.as-wrap .as-nav a > span::after {
+  content: "\2329";
+}
+.as-wrap .as-nav a:last-child > span::after {
+  content: "\232a";
+}
+
+/* Marker */
+.as-wrap .as-markers {
+  list-style: none;
+  text-align: center;
+  padding:0; margin:0;
+}
+.as-wrap .as-markers .as-mark {
+  display:inline-block;
+  margin:10px 5px 0 5px;
+}
+.as-wrap .as-markers .as-mark a {
+  display:block;
+  text-decoration: none;
+  color:#ccc;
+}
+.as-wrap .as-markers .as-mark a:hover,
+.as-wrap .as-markers .as-mark.active a { color:#0061fe; }
+.as-wrap .as-markers .as-mark a span {
+  display:block;
+  width: 10px;
+  height:10px;
+  font-size:40px;
+  line-height: 10px;
+}
+
+/* Caption */
+.as-wrap .as-item .caption {
+  position: absolute;
+  top:0;
+  left:0;
+  height: 100%;
+  width:40%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index:2;
+  padding:0 20px 0 60px;
+  box-sizing: border-box;
+}
+.rgba .as-wrap .as-item .caption { background:rgba(0,0,0,.5); }
+
+@media (max-width: 767px) {
+  /* Demo style */
+  body {padding:0; margin:0;}
+  .slide_1, .slide_2, .slide_3 {background-size: auto 100%; height: 400px}
+  .container {width:100%}
+  /* *** */
+  .as-wrap .as-view { height: 250px; }
+  .as-wrap .as-view .as-slider .as-item .caption { width:100%; }
+  .touch .as-wrap .as-nav { display:none;}
+  .as-wrap .as-item .caption {padding:1em;}
+}
